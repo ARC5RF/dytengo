@@ -58,10 +58,7 @@ func (i *DyStructIterator) Next() bool {
 // Key returns the key or index value of the current element.
 func (i *DyStructIterator) Key() tengo.Object {
 	t := i.v.Type()
-	// fmt.Println("key ", i.i-1)
-	// fmt.Println(t.NumField())
 	f := t.Field(i.i - 1)
-	// fmt.Println(f)
 	return &tengo.String{Value: f.Name}
 }
 

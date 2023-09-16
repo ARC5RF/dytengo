@@ -52,7 +52,6 @@ func (o *DyStruct) IndexGet(key tengo.Object) (res tengo.Object, err error) {
 	_str, ok := key.(*tengo.String)
 	if ok {
 		str := _str.Value
-		// fmt.Println(str)
 		v := o.Value
 		if o.Value.Kind() == reflect.Pointer {
 			v = reflect.Indirect(v)
@@ -63,7 +62,6 @@ func (o *DyStruct) IndexGet(key tengo.Object) (res tengo.Object, err error) {
 		}
 
 		mv := o.Value.MethodByName(str)
-		// fmt.Println("mv", mv.Type().String())
 		if mv != (reflect.Value{}) {
 			return FromInterface(mv.Interface())
 		}
