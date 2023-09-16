@@ -33,11 +33,7 @@ func FromInterface(v any) (tengo.Object, error) {
 		rk := rv.Kind()
 
 		uv := rv
-		if rk == reflect.Interface {
-			rv = reflect.Indirect(rv)
-			rk = rv.Kind()
-		}
-		if rk == reflect.Pointer {
+		if rk == reflect.Interface || rk == reflect.Pointer {
 			uv = reflect.Indirect(rv)
 			rk = uv.Kind()
 		}
