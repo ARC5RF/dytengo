@@ -31,7 +31,11 @@ func (o *DyMap) BinaryOp(_ token.Token, _ tengo.Object) (tengo.Object, error) {
 
 // Copy returns a copy of the type.
 func (o *DyMap) Copy() tengo.Object {
-	return nil
+	obj, err := FromInterface(o.Value.Interface())
+	if err != nil {
+		panic(err)
+	}
+	return obj
 }
 
 // IsFalsy returns true if the value of the type is falsy.
