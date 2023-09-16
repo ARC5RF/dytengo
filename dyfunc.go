@@ -21,6 +21,15 @@ func (o *DyFunc) String() string {
 	return "<dy-func>"
 }
 
+// Copy returns a copy of the type.
+func (o *DyFunc) Copy() tengo.Object {
+	obj, err := FromInterface(o.Value.Interface())
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
 func ins(args ...tengo.Object) []reflect.Value {
 	ins := []reflect.Value{}
 
