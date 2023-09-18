@@ -1,6 +1,7 @@
 package dytengo
 
 import (
+	"encoding/json"
 	"errors"
 	"reflect"
 
@@ -12,6 +13,14 @@ type DyArray struct {
 	tengo.ObjectImpl
 	Value reflect.Value
 	t     reflect.Type
+}
+
+func (o *DyArray) MarshalJSON() ([]byte, error) {
+	return json.Marshal(o.Value)
+}
+
+func (o *DyArray) UnmarshalJSON(data []byte) error {
+	return json.Unmarshal(data, o.Value.Interface())
 }
 
 // TypeName returns the name of the type.
