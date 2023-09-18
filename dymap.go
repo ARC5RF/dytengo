@@ -16,7 +16,7 @@ type DyMap struct {
 }
 
 func (o *DyMap) MarshalJSON() ([]byte, error) {
-	return json.Marshal(o.Value)
+	return json.Marshal(o.Value.Interface())
 }
 
 func (o *DyMap) UnmarshalJSON(data []byte) error {

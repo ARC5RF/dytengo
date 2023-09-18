@@ -16,7 +16,7 @@ type DyArray struct {
 }
 
 func (o *DyArray) MarshalJSON() ([]byte, error) {
-	return json.Marshal(o.Value)
+	return json.Marshal(o.Value.Interface())
 }
 
 func (o *DyArray) UnmarshalJSON(data []byte) error {

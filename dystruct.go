@@ -16,7 +16,7 @@ type DyStruct struct {
 }
 
 func (o *DyStruct) MarshalJSON() ([]byte, error) {
-	return json.Marshal(o.Value)
+	return json.Marshal(o.Value.Interface())
 }
 
 func (o *DyStruct) UnmarshalJSON(data []byte) error {
